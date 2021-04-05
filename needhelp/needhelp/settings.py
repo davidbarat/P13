@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'debug_toolbar',
+    'rest_framework',
     'help.apps.HelpConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -132,3 +133,11 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

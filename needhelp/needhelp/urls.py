@@ -24,5 +24,5 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('help/', include('help.urls')),
     path('', views.index, name='index'),
-
+    path('api-auth/', include('rest_framework.urls'))
 ]
