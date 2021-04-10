@@ -18,6 +18,7 @@
             {% csrf_token %}
             {{ profile_form.as_p }}
             {{ user_form.as_p }}
+            {{ userprofile_form.as_p }}
             <input type="submit" name="" value="Enregistrer">
         </form>
         {% endif %}

@@ -16,10 +16,16 @@ Including another URLconf
 import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework import routers
 from . import views
+from event import views as views_event
+
+router = routers.DefaultRouter()
+router.register(r'event', views_event.EventViewSet)
 
 
 urlpatterns = [
+    path('event/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('help/', include('help.urls')),

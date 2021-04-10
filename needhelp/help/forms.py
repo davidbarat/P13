@@ -1,6 +1,23 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import UserProfile
 
+
+class UserProfileForm(forms.ModelForm):
+    phone = forms.IntegerField(
+        label="Votre Téléphone",
+        max_value=999999999,
+        widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}))
+        # group_admin = models.BooleanField(default=False)
+
+    class Meta:
+        model = UserProfile
+        exclude = ['user','group_id','group_admin']
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['phone']
 
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(

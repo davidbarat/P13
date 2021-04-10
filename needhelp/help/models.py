@@ -6,6 +6,9 @@ from django.contrib.auth.backends import ModelBackend, UserModel
 from django.core.exceptions import MultipleObjectsReturned
 from django.db.models import Q
 from django.urls import reverse
+from phone_field import PhoneField
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class Group(models.Model):
@@ -18,14 +21,27 @@ class Group(models.Model):
     def __str__(self):
         return self.group_name
 
-    
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    group_id = models.OneToOneField(
-        Group, to_field="id", primary_key=True, on_delete=models.CASCADE
+    group = models.OneToOneField(
+        Group,
+        on_delete=models.CASCADE,
+        default=1
     )
-    phone = models.BigIntegerField()
-    group_admin = models.BooleanField(default=False)
+    phone = PhoneField(blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            UserProfile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.userprofile.save()
 
 
 class Event(models.Model):
@@ -34,6 +50,7 @@ class Event(models.Model):
     group_id = models.OneToOneField(
         Group, to_field="id", on_delete=models.CASCADE
     )
+    group_name = models.CharField(max_length=30, default='default name group')
     status = models.CharField(max_length=10)
     
 
