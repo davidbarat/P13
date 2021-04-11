@@ -6,6 +6,7 @@ from django.contrib.auth.backends import ModelBackend, UserModel
 from django.core.exceptions import MultipleObjectsReturned
 from django.db.models import Q
 from django.urls import reverse
+from django.contrib import messages
 from phone_field import PhoneField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -24,7 +25,7 @@ class Group(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    group = models.OneToOneField(
+    group = models.ForeignKey(
         Group,
         on_delete=models.CASCADE,
         default=1
@@ -47,7 +48,7 @@ class UserProfile(models.Model):
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
     date_event = models.DateField()
-    group_id = models.OneToOneField(
+    group = models.OneToOneField(
         Group, to_field="id", on_delete=models.CASCADE
     )
     group_name = models.CharField(max_length=30, default='default name group')
@@ -60,7 +61,7 @@ class EmailBackend(ModelBackend):
             user = UserModel.objects.get(Q(email__iexact=username))
         except MultipleObjectsReturned:
             return User.objects.filter(email=username).order_by("id").first()
-        except User.DoesNotExist as exc:
+        except user.DoesNotExist as exc:
             message = str(exc)
         else:
             if user.check_password(password) and self.user_can_authenticate(user):

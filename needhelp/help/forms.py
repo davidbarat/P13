@@ -8,7 +8,6 @@ class UserProfileForm(forms.ModelForm):
         label="Votre Téléphone",
         max_value=999999999,
         widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}))
-        # group_admin = models.BooleanField(default=False)
 
     class Meta:
         model = UserProfile
