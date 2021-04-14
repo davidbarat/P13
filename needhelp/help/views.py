@@ -10,10 +10,6 @@ from django.urls import reverse
 from .forms import UserForm, RegisterForm, UserProfileForm
 from .models import UserProfile
 
-"""
-def index(request):
-    return HttpResponse("Hello, world. You're at the help index.")
-"""
 
 def index(request):
     template = loader.get_template("help/index.html")
@@ -27,7 +23,7 @@ def register(request):
         userprofile_form = UserProfileForm(data = request.POST)
         if user_form.is_valid() and userprofile_form.is_valid():
             user = user_form.save()
-            user.set_password(user.password)
+            # user.set_password(user.password)
             phone = userprofile_form.cleaned_data.get("phone")
             userprofile = UserProfile.objects.filter(user_id=user.id)
             userprofile.update(phone=phone)

@@ -12,6 +12,8 @@
     <div class="container">
         {% if registered %}
         <h1>Merci de vous êtes inscrit(e)</h1>
+        <h1>Vous pouvez vous rattacher à un groupe ou en créer un en cliquant <a href="{% url 'list' %}">ici</a>
+        </h1>
         {% else %}
         <h1>Remplissez le formulaire ci-dessous :</h1>
         <form enctype="multipart/form-data" method="POST">

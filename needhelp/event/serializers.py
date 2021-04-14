@@ -9,4 +9,4 @@ from rest_framework import serializers
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Event
-        fields = ['date_event', 'group_name','status']
+        fields = ['date_event', 'group_id','group_name','status']

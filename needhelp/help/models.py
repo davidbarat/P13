@@ -48,8 +48,10 @@ class UserProfile(models.Model):
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
     date_event = models.DateField()
-    group = models.OneToOneField(
-        Group, to_field="id", on_delete=models.CASCADE
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.CASCADE,
+        default=1
     )
     group_name = models.CharField(max_length=30, default='default name group')
     status = models.CharField(max_length=10)
