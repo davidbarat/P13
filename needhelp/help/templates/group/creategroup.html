@@ -1,0 +1,20 @@
+{% extends 'help/base.html' %}
+
+{% block content %}
+
+<section class="page-section" style="background-image: linear-gradient(to top, rgba(92, 77, 66, 0.80) 50%, rgba(92, 77, 66, 0.8) 100%),url('/static/help/images/1.jpg'); background-repeat:no-repeat;
+    background-size:cover; text-shadow: white 0px 0px 2px; object-fit: fill; background-position: center;"
+    id="profile">
+</section>
+<div class="container col-lg-8 bg-white text-black">
+    {% if user.is_authenticated %}
+    <h1>Remplissez le formulaire ci-dessous :</h1>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ group_form.as_p }}
+        <input type="submit" name="" value="Enregistrer">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

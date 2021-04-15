@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Group
 
 
 class UserProfileForm(forms.ModelForm):
@@ -58,3 +58,28 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "password")
+
+class GroupForm(forms.ModelForm):
+
+    group_name = forms.CharField(
+        label="Le nom du groupe",
+        max_length=50,
+        widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
+    )
+    adress = forms.CharField(
+        label="Adresse",
+        max_length=50,
+        widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
+    )
+    zipcode = forms.IntegerField(
+        label="Code Postal",
+        widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
+    )
+    city = forms.CharField(
+        label="Ville",
+        max_length=30,
+        widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
+    )
+    class Meta:
+        model = Group
+        fields = ("group_name", "adress", "zipcode", "city")
