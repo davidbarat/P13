@@ -4,5 +4,7 @@ from . import views
 urlpatterns = [
     path('list/', views.list, name='listgroup'),
     path('create/', views.create, name='creategroup'),
+    # path('update/<str:groupname>/', views.update_group, name='updategroup'),
+    path('update/', views.update_group, name='updategroup'),
 
 ]

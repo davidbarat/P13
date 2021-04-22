@@ -1,19 +1,26 @@
 {% extends 'help/base.html' %}
-
 {% block content %}
 
 
 <section class="page-section" style="background-image: linear-gradient(to top, rgba(92, 77, 66, 0.80) 50%, rgba(92, 77, 66, 0.8) 100%),url('/static/help/images/1.jpg'); background-repeat:no-repeat;
     background-size:cover; text-shadow: white 0px 0px 2px; object-fit: fill; background-position: center;"
     id="profile">
-    <h2 class="text-center text-white text-uppercase">{{ user.first_name }}</h2>
 </section>
-<div class="container col-lg-8 bg-white text-black text-center">
+<br>
+<div class="container col-lg-8 bg-white text-black default">
+    {% with groupname=profile.group %}
     {% if user.is_authenticated %}
-    <h2>Votre adresse email : {{ user.email }}</h2>
-    <!-- {% else %} <h2><a href="{% url 'accounts/login' %}">Enregistrez-vous ou logguez vous</a></h2>
-        {% endif %}
-        -->
+    <p>Votre adresse email : {{ user.email }}</p>
+    <p>Votre numéro de téléphone : {{ profile.phone }}</p>
+
+    {% if groupname == "default" %}
+    <p>Il est temps de vous rattacher à un <a href="{% url 'listgroup' %}">groupe</a></p>
+    {% else %}
+    <p>Vous êtes rattaché au groupe : {{ groupname }}</p>
+    <a href="{% url 'listgroup' %}">test</a>
+    {% endif %}
+    {% endif %}
+    {% endwith %}
 </div>
 
 

@@ -23,7 +23,8 @@ def register(request):
         userprofile_form = UserProfileForm(data = request.POST)
         if user_form.is_valid() and userprofile_form.is_valid():
             user = user_form.save()
-            # user.set_password(user.password)
+            user.set_password(user.password)
+            user.save()
             phone = userprofile_form.cleaned_data.get("phone")
             userprofile = UserProfile.objects.filter(user_id=user.id)
             userprofile.update(phone=phone)

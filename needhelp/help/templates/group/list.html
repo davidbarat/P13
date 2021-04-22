@@ -6,18 +6,35 @@
     background-size:cover; text-shadow: white 0px 0px 2px; object-fit: fill; background-position: center;"
     id="profile">
 </section>
-<div class="container col-lg-8 bg-white text-black text-center">
+<br>
+<div class="container bg-white text-black default">
     {% if user.is_authenticated %}
+    <h2>Voici la liste des groupes :</h2>
     {% for group in groups %}
-    <h2>Voici la liste des groupes : </h2>
-    <!-- Rounded switch -->
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
-    <h2>{{ group.group_name }}</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <label class="switch"> <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="col-md-6">
+            <p>{{ group.group_name }}</p>
+        </div>
+    </div>
     {% endfor %}
-    {% endif %}
-</div>
 
+    <form method="post" action="{% url 'updategroup' %}">
+        {% csrf_token %}
+        <div class="input-group">
+            <select name="inputGroupSelect01" class="custom-select">
+                <option selected>Choisissez...</option>
+                {% for group in groups %}
+                <option value={{ group.group_name }}>{{ group.group_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+    </form>
+</div>
+{% endif %}
+</div>
 {% endblock %}
