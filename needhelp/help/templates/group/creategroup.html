@@ -9,12 +9,16 @@
 <br>
 <div class="container col-lg-8 bg-white text-black default">
     {% if user.is_authenticated %}
+    {% if registered %}
+    <h1>Merci d'avoir créé votre groupe, accéder à votre compte <a href="{% url 'profile' %}">ici</a></h1>
+    {% else %}
     <h1>Remplissez le formulaire ci-dessous :</h1>
     <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         {{ group_form.as_p }}
         <input type="submit" name="" value="Enregistrer">
     </form>
+    {% endif %}
     {% endif %}
 </div>
 

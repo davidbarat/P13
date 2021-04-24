@@ -8,6 +8,8 @@
 </section>
 <br>
 <div class="container col-lg-8 bg-white text-black default">
+    <h2> Mon Compte : </h2>
+    <br>
     {% with groupname=profile.group %}
     {% if user.is_authenticated %}
     <p>Votre adresse email : {{ user.email }}</p>
@@ -17,8 +19,15 @@
     <p>Il est temps de vous rattacher à un <a href="{% url 'listgroup' %}">groupe</a></p>
     {% else %}
     <p>Vous êtes rattaché au groupe : {{ groupname }}</p>
-    <a href="{% url 'listgroup' %}">test</a>
+    <p> Si vous ne trouvez pas votre groupe, vous pouvez en créer un <a href="{% url 'listgroup' %}">ici</a></p>
     {% endif %}
+    {% endif %}
+    {% if event %}
+    <p>Vous avez des évènements en cours:</p>
+    {{ event.date_event }}
+    {{ event.status }}
+    {% else %}
+    <p>Vous n'avez pas d'évènements en cours</p>
     {% endif %}
     {% endwith %}
 </div>

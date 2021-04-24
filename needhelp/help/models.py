@@ -10,6 +10,7 @@ from django.contrib import messages
 from phone_field import PhoneField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+# from event.signals import broadcast_sms
 
 
 class Group(models.Model):
@@ -55,7 +56,7 @@ class Event(models.Model):
     )
     group_name = models.CharField(max_length=30, default='default name group')
     status = models.CharField(max_length=10)
-    
+
 
 class EmailBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):

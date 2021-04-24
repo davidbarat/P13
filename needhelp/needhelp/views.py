@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django_twilio.decorators import twilio_view
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-from help.models import UserProfile
+from help.models import UserProfile, Event
 
 
 def index(request):
@@ -19,14 +19,22 @@ def profile(request, username=None):
     else:
         post_owner = request.user
         profiles = UserProfile.objects.filter(id__exact=post_owner.id)
+    
         for profile in profiles:
             {
                 "group_name" : profile.group,
                 "phone" : profile.phone
             }
+            events = Event.objects.filter(group_name__exact=profile.group)
+            for event in events:
+                {
+                "date_event" : event.date_event,
+                "status" : event.status
+            }
         context = {
             "post_owner": post_owner,
             "profile": profile,
+            "event": event,
         }
     return render(request, "help/profile.html", context)
 

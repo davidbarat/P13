@@ -20,20 +20,23 @@ def list(request):
 @transaction.atomic
 @login_required()
 def create(request):
+    registered = False
     if request.method == "POST":
         group_form = GroupForm(data=request.POST)
         if group_form.is_valid():
             group = group_form.save()
-            user = User.objects.filter(username=request.user)
-            userprofile = UserProfile.objects.filter(user__exact=user[0])
-            userprofile.update(group=group)
+            # user = User.objects.filter(username=request.user)
+            # userprofile = UserProfile.objects.filter(user__exact=user[0])
+            # userprofile.update(group=group)
+            registered = True
         else:
             messages.error(request, ('Veuillez corriger les erreurs ci-dessous.'))
     else:
         group_form = GroupForm()
     return render(
         request, "group/creategroup.html", {
-            "group_form": group_form, 
+            "group_form": group_form,
+            "registered" : registered
             }
     )
 
