@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+services: 
+  - postgresql
+env:
+  - DJANGO=3.1 DB=postgresql
+before_script:
+  - psql -U postgres -c "CREATE USER david WITH PASSWORD 'test';" -U postgres
+  - psql -U postgres -c "ALTER ROLE david CREATEDB;" -U postgres
+  - psql -U postgres -c "ALTER ROLE david superuser;" -U postgres
+  - psql -U postgres -c "CREATE DATABASE dbtest;" -U postgres
+install:
+  - pip install -r requirements.txt
+script:
+  - coverage run --source=help ./manage.py test
+  # - ./manage.py test_selenium
