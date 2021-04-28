@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from twilio.rest import Client
 from help.models import Event
 
-
+"""
 @receiver(post_save, sender=Event)
 def signal_receiver(sender, created, **kwargs):
     if kwargs.get('created', False):
@@ -21,3 +21,4 @@ def signal_receiver(sender, created, **kwargs):
                                        from_=settings.TWILIO_NUMBER,
                                        body=message_to_broadcast)
         return HttpResponse("messages sent!", 200)
+"""

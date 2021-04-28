@@ -15,6 +15,7 @@ def index(request):
     template = loader.get_template("help/index.html")
     return HttpResponse(template.render(request=request))
 
+
 @transaction.atomic
 def register(request):
     registered = False
@@ -41,9 +42,11 @@ def register(request):
             "registered": registered}
     )
 
+
 def logout2(request):
     logout(request)
     return redirect(reverse("index"))
+
 
 """
 def login2(request):

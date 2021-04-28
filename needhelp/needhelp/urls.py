@@ -2,7 +2,6 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from django.shortcuts import render, get_object_or_404, redirect
 from . import views
 from event import views as views_event
 

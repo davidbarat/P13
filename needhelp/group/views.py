@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -17,6 +15,7 @@ def list(request):
         }
     return render(request, "group/list.html", context)
 
+
 @transaction.atomic
 @login_required()
 def create(request):
@@ -24,21 +23,24 @@ def create(request):
     if request.method == "POST":
         group_form = GroupForm(data=request.POST)
         if group_form.is_valid():
-            group = group_form.save()
+            # group = group_form.save()
+            group_form.save()
             # user = User.objects.filter(username=request.user)
             # userprofile = UserProfile.objects.filter(user__exact=user[0])
             # userprofile.update(group=group)
             registered = True
         else:
-            messages.error(request, ('Veuillez corriger les erreurs ci-dessous.'))
+            messages.error(
+                request, ('Veuillez corriger les erreurs ci-dessous.'))
     else:
         group_form = GroupForm()
     return render(
         request, "group/creategroup.html", {
             "group_form": group_form,
-            "registered" : registered
+            "registered": registered
             }
     )
+
 
 @login_required()
 def update_group(request):
@@ -46,6 +48,7 @@ def update_group(request):
         groupname = request.POST['inputGroupSelect01']
         user = User.objects.filter(username=request.user)
         userprofile = UserProfile.objects.filter(user__exact=user[0])
-        groupid = Group.objects.filter(group_name__exact=groupname).values('id')
+        groupid = Group.objects.filter(
+            group_name__exact=groupname).values('id')
         userprofile.update(group=groupid)
         return render(request, "help/profile.html")
