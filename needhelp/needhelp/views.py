@@ -13,23 +13,24 @@ def index(request):
     template = loader.get_template('help/index.html')
     return HttpResponse(template.render(request=request))
 
+
 def profile(request, username=None):
     if username:
         post_owner = get_object_or_404(User, username=username)
     else:
         post_owner = request.user
         profiles = UserProfile.objects.filter(id__exact=post_owner.id)
-    
+
         for profile in profiles:
             {
-                "group_name" : profile.group,
-                "phone" : profile.phone
+                "group_name": profile.group,
+                "phone": profile.phone
             }
             events = Event.objects.filter(group_name__exact=profile.group)
             for event in events:
                 {
-                "date_event" : event.date_event,
-                "status" : event.status
+                "date_event": event.date_event,
+                "status": event.status
             }
         context = {
             "post_owner": post_owner,
@@ -37,6 +38,7 @@ def profile(request, username=None):
             "event": event,
         }
     return render(request, "help/profile.html", context)
+
 
 def broadcast_sms(request):
     message_to_broadcast = (
@@ -51,3 +53,18 @@ def broadcast_sms(request):
                                    from_=settings.TWILIO_NUMBER,
                                    body=message_to_broadcast)
     return HttpResponse("messages sent!", 200)
+
+
+def mentions(request):
+    template = loader.get_template("help/mentions.html")
+    return HttpResponse(template.render(request=request))
+
+
+def about(request):
+    template = loader.get_template("help/about.html")
+    return HttpResponse(template.render(request=request))
+
+
+def contact(request):
+    template = loader.get_template("help/contact.html")
+    return HttpResponse(template.render(request=request))

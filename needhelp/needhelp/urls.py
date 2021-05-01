@@ -12,6 +12,9 @@ router.register(r'list', views_event.EventViewSet)
 urlpatterns = [
     path('event/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('mentions/', views.mentions, name="mentions"),
+    path('about/', views.about, name="about"),
+    path('contact/', views.contact, name="contact"),
     path('__debug__/', include(debug_toolbar.urls)),
     path('help/', include('help.urls')),
     path('', views.index, name='index'),

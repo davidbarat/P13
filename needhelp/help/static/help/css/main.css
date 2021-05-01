@@ -147,3 +147,5 @@ input:checked + .slider:before {
 .default{
   min-height: 300px;
 }
+
+mark { background-color:grey; color:white; }

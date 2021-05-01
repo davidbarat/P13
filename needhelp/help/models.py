@@ -1,17 +1,14 @@
-import json
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend, UserModel
 from django.core.exceptions import MultipleObjectsReturned
-from django.core import serializers
 from django.db.models import Q
 from phone_field import PhoneField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.conf import settings
-from django.http import HttpResponse
 from twilio.rest import Client
-from .managers import EventManager
+from .managers import EventManager, UserProfileManager, GroupManager
 
 
 class Group(models.Model):
@@ -23,6 +20,8 @@ class Group(models.Model):
 
     def __str__(self):
         return self.group_name
+
+    objects = GroupManager()
 
 
 class UserProfile(models.Model):
@@ -46,6 +45,8 @@ class UserProfile(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.userprofile.save()
 
+    objects = UserProfileManager()
+
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
@@ -67,7 +68,8 @@ class Event(models.Model):
                 group_name__exact=self.group_name).values('id')[0], fields=("group"),
         )
         """
-        group = Group.objects.filter(group_name__exact=self.group_name).values('id')[0]
+        group = Group.objects.filter(
+            group_name__exact=self.group_name).values('id')[0]
         self.group_id = group["id"]
         # groups_json = json.loads(groups_data)
         """
@@ -76,19 +78,39 @@ class Event(models.Model):
         """
         super(Event, self).save(*args, **kwargs)
 
-    def notify_bysms(self):
+    # def notify_bysms(self):
+    def notify_bysms(self, group_name):
+        number_list = []
         message_to_broadcast = (
             "J'ai besoin d'aide"
             )
         client = Client(
             settings.TWILIO_ACCOUNT_SID,
             settings.TWILIO_AUTH_TOKEN)
-        for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
-            if recipient:
-                client.messages.create(to=recipient,
-                                       from_=settings.TWILIO_NUMBER,
-                                       body=message_to_broadcast)
-        # return HttpResponse("messages sent!", 200)
+        result_group_id = Group.objects.get_id(group_name)
+        for group in result_group_id:
+            id_group = group['id']
+        numbers = UserProfile.objects.get_number(id_group)
+        print(numbers)
+        print(numbers[0]['phone'])
+        test = numbers[0]['phone']
+        print(test)
+        """
+        for dic in numbers:
+            for key in dic:
+                print(dic[key])
+                number_list.append(dic[key])
+        """
+        # for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
+        # for recipient in number_list:
+            # if recipient:
+        # print(number_list.phone)
+        # if test:
+            # receiver = recipient['phone']
+        client.messages.create(
+            to=test,
+            from_=settings.TWILIO_NUMBER,
+            body=message_to_broadcast)
 
 
 class EmailBackend(ModelBackend):
