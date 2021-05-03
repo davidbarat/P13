@@ -7,8 +7,8 @@ class UrlsTest(TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
-        self.user = User.objects.create_user(
-            username='david', email='david@gmail.com', password='csecret')
+        # self.user = User.objects.create_user(
+        #     username='david', email='david@gmail.com', password='csecret')
 
     def test_index_page(self):
         response = self.client.get(reverse("index"))

@@ -1,4 +1,4 @@
-import selenium
+# import selenium
 from selenium import webdriver
 import unittest
 import time
@@ -7,13 +7,12 @@ from selenium.webdriver.common.keys import Keys
 
 class grandPyTest(unittest.TestCase):
 
-
     def setUp(self):
         self.driver = webdriver.Firefox(
             "/Users/david/Projets/selenium driver/")
-        self.url = "https://grandpy-p7-pro.herokuapp.com/"
+        self.url = "http://127.0.0.1:8000/"
 
-    def test_search_grandpy(self):
+    def test_search(self):
         self.driver.maximize_window()
         self.driver.get(self.url)
         self.elem = self.driver.find_element_by_id("inputSearch")
@@ -23,6 +22,7 @@ class grandPyTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
+
 
 if __name__ == "__main__":
     unittest.main()

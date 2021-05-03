@@ -27,16 +27,22 @@ def profile(request, username=None):
                 "phone": profile.phone
             }
             events = Event.objects.filter(group_name__exact=profile.group)
-            for event in events:
-                {
-                "date_event": event.date_event,
-                "status": event.status
+            if events:
+                for event in events:
+                    {
+                    "date_event": event.date_event,
+                    "status": event.status
+                    }
+                context = {
+                "post_owner": post_owner,
+                "profile": profile,
+                "event": event,
             }
-        context = {
-            "post_owner": post_owner,
-            "profile": profile,
-            "event": event,
-        }
+            else:
+                context = {
+                    "post_owner": post_owner,
+                    "profile": profile,
+                }
     return render(request, "help/profile.html", context)
 
 

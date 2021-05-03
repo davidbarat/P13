@@ -1,0 +1,21 @@
+1620071846945	geckodriver	INFO	Listening on 127.0.0.1:58984
+1620071849698	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileeJ4hbI"
+1620071878149	Marionette	INFO	Marionette enabled
+Exiting due to channel error.
+1620072304860	geckodriver	INFO	Listening on 127.0.0.1:59675
+1620072307466	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileAxTq28"
+1620072321457	Marionette	INFO	Marionette enabled
+1620073383375	geckodriver	INFO	Listening on 127.0.0.1:60710
+1620073384661	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileISvUIz"
+1620073466496	geckodriver	INFO	Listening on 127.0.0.1:60858
+1620073468516	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileWtV58U"
+1620073475141	Marionette	INFO	Marionette enabled
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught exception: Object
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1620073542231	geckodriver	INFO	Listening on 127.0.0.1:60993
+1620073544366	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofile2Bd8Cm"
+1620073610673	geckodriver	INFO	Listening on 127.0.0.1:61098
+1620073611955	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileAU1iaI"
+1620073621520	Marionette	INFO	Marionette enabled

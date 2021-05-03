@@ -16,8 +16,11 @@ class EventManager(models.Manager):
 class UserProfileManager(models.Manager):
 
     def get_number(self, group_id):
-        return super(UserProfileManager, self).filter(
-            group_id__exact=group_id).values('phone')
+        number_list = []
+        number_list = super(
+            UserProfileManager,
+            self).filter(group_id__exact=group_id)
+        return(number_list)
 
 
 class GroupManager(models.Manager):

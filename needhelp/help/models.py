@@ -90,27 +90,15 @@ class Event(models.Model):
         result_group_id = Group.objects.get_id(group_name)
         for group in result_group_id:
             id_group = group['id']
-        numbers = UserProfile.objects.get_number(id_group)
-        print(numbers)
-        print(numbers[0]['phone'])
-        test = numbers[0]['phone']
-        print(test)
-        """
-        for dic in numbers:
-            for key in dic:
-                print(dic[key])
-                number_list.append(dic[key])
-        """
-        # for recipient in settings.SMS_BROADCAST_TO_NUMBERS:
-        # for recipient in number_list:
-            # if recipient:
-        # print(number_list.phone)
-        # if test:
-            # receiver = recipient['phone']
-        client.messages.create(
-            to=test,
-            from_=settings.TWILIO_NUMBER,
-            body=message_to_broadcast)
+        number_list = UserProfile.objects.get_number(id_group)
+        # print(number_list)
+        for i in number_list:
+            recipient = '+33'+str(i.phone)
+            print(recipient)
+            client.messages.create(
+                to=recipient,
+                from_=settings.TWILIO_NUMBER,
+                body=message_to_broadcast)
 
 
 class EmailBackend(ModelBackend):
