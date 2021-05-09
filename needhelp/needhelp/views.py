@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django_twilio.decorators import twilio_view
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
-from help.models import UserProfile, Event
+from help.models import UserProfile, Event, Group
 
 
 def index(request):
@@ -19,36 +19,35 @@ def profile(request, username=None):
         post_owner = get_object_or_404(User, username=username)
     else:
         post_owner = request.user
-        profiles = UserProfile.objects.filter(id__exact=post_owner.id)
-
-        for profile in profiles:
-            {
-                "group_name": profile.group,
-                "phone": profile.phone
-            }
-            events = Event.objects.filter(group_name__exact=profile.group)
-            if events:
-                for event in events:
-                    {
-                    "date_event": event.date_event,
-                    "status": event.status
-                    }
-                context = {
+        group_name, phone = UserProfile.objects.get_group_name(post_owner.id)
+        # group_name = Group.objects.get_group_name(group_id)
+        events = Event.objects.filter(group_id__exact=4)
+        event_list = []
+        if events:
+            for elem in events:
+                event = {
+                    "id": elem.id,
+                    "date_event": elem.date_event,
+                    "status": elem.status
+                }
+                event_list.append(event)
+            context = {
+                "post_owner": post_owner,
+                "phone": phone,
+                "group_name": group_name[0],
+                "event_list": event_list
+                }
+        else:
+            context = {
                 "post_owner": post_owner,
                 "profile": profile,
-                "event": event,
             }
-            else:
-                context = {
-                    "post_owner": post_owner,
-                    "profile": profile,
-                }
     return render(request, "help/profile.html", context)
 
 
 def broadcast_sms(request):
     message_to_broadcast = (
-        "Have you played the incredible TwilioQuest " "yet? Grab it here: https://www.twilio.com/quest"
+        "Have you played the incredible TwilioQuest ?"
         )
     client = Client(
         settings.TWILIO_ACCOUNT_SID,

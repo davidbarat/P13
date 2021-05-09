@@ -11,11 +11,12 @@
 <section class="page-section bg-white" id="register">
     <div class="container">
         {% if registered %}
-        <h1>Merci de vous êtes inscrit(e)</h1>
-        <h1>Vous pouvez vous rattacher à un groupe ou en créer un en cliquant <a href="{% url 'listgroup' %}">ici</a>
-        </h1>
+        <h2>Merci de vous êtes inscrit(e)</h2>
+        <p>Veuillez vous connectez en cliquant <a href="{% url 'login' %}">ici</a> vous pourrez ainsi créer un groupe ou
+            vous rattacher à un groupe déjà existant
+        </p>
         {% else %}
-        <h1>Remplissez le formulaire ci-dessous :</h1>
+        <h1>Remplissez le formulaire ci-dessous :</h1><br>
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {{ profile_form.as_p }}

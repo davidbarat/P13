@@ -5,13 +5,13 @@ from .models import UserProfile, Group
 
 class UserProfileForm(forms.ModelForm):
     phone = forms.IntegerField(
-        label="Votre Téléphone",
+        label="Téléphone",
         max_value=999999999,
         widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}))
 
     class Meta:
         model = UserProfile
-        exclude = ['user','group_id','group_admin']
+        exclude = ['user', 'group_id', 'group_admin', 'group']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
@@ -20,13 +20,13 @@ class ProfileUpdateForm(forms.ModelForm):
 
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(
-        label="Votre email",
+        label="Email",
         max_length=50,
         widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
     )
     password = forms.CharField(widget=forms.PasswordInput())
     username = forms.CharField(
-        label="Nom d utilisateur",
+        label="Nom d'utilisateur",
         max_length=30,
         widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
     )
@@ -80,6 +80,7 @@ class GroupForm(forms.ModelForm):
         max_length=30,
         widget=forms.TextInput(attrs={"style": "color:black", "type": "text"}),
     )
+
     class Meta:
         model = Group
         fields = ("group_name", "adress", "zipcode", "city")

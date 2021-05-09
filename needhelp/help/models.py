@@ -50,7 +50,7 @@ class UserProfile(models.Model):
 
 class Event(models.Model):
     id = models.AutoField(primary_key=True)
-    date_event = models.DateField()
+    date_event = models.DateTimeField()
     group = models.ForeignKey(
         Group,
         on_delete=models.CASCADE

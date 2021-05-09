@@ -1,4 +1,5 @@
 from django.db import models
+# from .models import Group
 
 
 class EventManager(models.Manager):
@@ -22,9 +23,23 @@ class UserProfileManager(models.Manager):
             self).filter(group_id__exact=group_id)
         return(number_list)
 
+    def get_group_name(self, user_id):
+        profiles = super(UserProfileManager, self).filter(
+            id__exact=user_id)
+        for elem in profiles:
+            group_id = elem.group,
+            phone = elem.phone
+        # print(group_id)
+        # print(phone)
+        return(group_id, phone)
+
 
 class GroupManager(models.Manager):
 
     def get_id(self, group_name):
         return super(GroupManager, self).filter(
             group_name__exact=group_name).values('id')
+
+    def get_group_name(self, group_id):
+        return super(GroupManager, self).filter(
+            id__exact=group_id).values('group_name')
