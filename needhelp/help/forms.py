@@ -13,10 +13,12 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ['user', 'group_id', 'group_admin', 'group']
 
+
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['phone']
+
 
 class RegisterForm(forms.ModelForm):
     email = forms.EmailField(
@@ -59,6 +61,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ("username", "password")
 
+
 class GroupForm(forms.ModelForm):
 
     group_name = forms.CharField(
@@ -84,3 +87,11 @@ class GroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = ("group_name", "adress", "zipcode", "city")
+
+
+class ContactForm(forms.Form):
+
+    Nom = forms.CharField(max_length=50)
+    Email = forms.EmailField(max_length=50)
+    Mobile = forms.CharField()
+    Message = forms.CharField(widget=forms.Textarea, max_length=2000)

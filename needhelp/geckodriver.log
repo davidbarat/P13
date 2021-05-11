@@ -19,3 +19,31 @@ JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught e
 1620073610673	geckodriver	INFO	Listening on 127.0.0.1:61098
 1620073611955	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileAU1iaI"
 1620073621520	Marionette	INFO	Marionette enabled
+1620628751756	geckodriver	INFO	Listening on 127.0.0.1:49517
+1620628754872	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofilesepj9H"
+1620628782590	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1620628808518	Marionette	INFO	Listening on port 49524
+1620628808873	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+1620628816752	Marionette	INFO	Stopped listening on port 49524
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1620629042874	geckodriver	INFO	Listening on 127.0.0.1:50046
+1620629044166	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileFr9TeR"
+1620629055684	Marionette	INFO	Marionette enabled
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1620629065111	Marionette	INFO	Listening on port 50053
+1620629065225	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+1620629071823	Marionette	INFO	Stopped listening on port 50053
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

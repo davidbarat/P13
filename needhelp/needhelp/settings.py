@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'needhelp.urls'
@@ -163,3 +162,11 @@ TIME_INPUT_FORMATS = ['%H:%M:%S']
 DATE_INPUT_FORMATS = ['%d %b %Y']
 LANGUAGE_CODE = 'fr'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'contact.purbeurre@gmail.com'
+EMAIL_HOST_PASSWORD = 'PurP8@contact'

@@ -7,8 +7,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm, RegisterForm, UserProfileForm
+from .forms import UserForm, RegisterForm, UserProfileForm, ContactForm
 from .models import UserProfile, Event
 
 
@@ -40,7 +41,7 @@ def register(request):
     return render(
         request, "help/registration.html", {
             "user_form": user_form, 
-            "userprofile_form":userprofile_form,
+            "userprofile_form": userprofile_form,
             "registered": registered}
     )
 
@@ -58,18 +59,38 @@ def update_event(request):
         event.update(status="closed")
 
         return redirect(reverse('profile'))
+
+    else:
+        user_form = RegisterForm()
+        userprofile_form = UserProfileForm()
     return render(request, "help/profile.html")
 
 
 def contact(request):
     if request.method == "POST":
-        Name = request.POST['Name']
-        Email = request.POST['Email']
-        Phone = request.POST['Phone']
-        Message = request.POST['Message']
+        subject = "demande d'info"
+        body = {
+            'name': request.POST['Nom'],
+            'email': request.POST['Email'],
+            'phone': request.POST['Mobile'],
+            'message': request.POST['Message'],
+            }
+        message = "\n".join(body.values())
 
+        try:
+            send_mail(
+                subject,
+                message,
+                'dav.barat@gmail.com',
+                ['dav.barat@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
         return redirect(reverse('contact'))
-    return render(request, "help/contact.html")
+    else:
+        contact_form = ContactForm()
+
+    return render(request, "help/contact.html", {'contact_form': contact_form})
+
 
 """
 def login2(request):

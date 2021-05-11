@@ -13,5 +13,5 @@ before_script:
 install:
   - pip install -r requirements.txt
 script:
-  - coverage run --source=help ./manage.py test
+  - coverage run --source=group,help,event  manage.py test -v 3
   # - ./manage.py test_selenium

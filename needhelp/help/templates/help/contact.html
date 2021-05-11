@@ -19,38 +19,17 @@
 			</header>
 
 			<p>
-				We’d love to hear from you. Interested in working together? Fill out the form below with some info about
-				your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.
+				Nous aimerions recevoir de vos nouvelles. Vous souhaitez travailler ensemble? Remplissez le formulaire
+				ci-dessous avec
+				quelques informations sur
+				votre projet et je vous répondrai dès que possible. Veuillez m'accorder quelques jours pour répondre.
 			</p>
 			<br>
-			<form method="post" action="{% url 'contact' %}">
+
+			<form enctype="multipart/form-data" method="POST">
 				{% csrf_token %}
-				<div class="row">
-					<div class="col-sm-4">
-						<input class="form-control" type="text" name="Name" value="{{ Name }}" placeholder="Nom">
-					</div>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" name="Email" value="{{ Email }}" placeholder="Email">
-					</div>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" name="Phone" value="{{ Phone }}"
-							placeholder="Téléphone">
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-sm-12">
-						<textarea placeholder="Tapez votre message ici..." name="Message" value="{{ Message }}"
-							class="form-control" rows="9"></textarea>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-sm-6">
-						<button name="contact" type="submit" value="Name"
-							class="btn btn-secondary btn-sm">Envoyez</button>
-					</div>
-				</div>
+				{{ contact_form.as_p }}
+				<input class="btn btn-secondary btn-sm" type="submit" name="" value="Envoyez">
 			</form>
 
 		</article>

@@ -13,3 +13,7 @@ class UrlsTest(TestCase):
     def test_index_page(self):
         response = self.client.get(reverse("index"))
         self.assertEqual(response.status_code, 200)
+
+    def test_contact_page(self):
+        response = self.client.get(reverse("contact"))
+        self.assertEqual(response.status_code, 200)

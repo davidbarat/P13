@@ -43,7 +43,7 @@
                     <li class="active"><a href="{% url 'index' %}" id="home">Home</a></li>
                     <li><a href="{% url 'about' %}" id="about_top">About</a>
                     </li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'contact' %}" id="contact">Contact</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="text-black js-scroll-trigger" href="{% url 'profile' %}"
                             id="moncompte">Mon
