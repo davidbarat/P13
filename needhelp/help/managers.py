@@ -23,15 +23,15 @@ class UserProfileManager(models.Manager):
             self).filter(group_id__exact=group_id)
         return(number_list)
 
-    def get_group_name(self, user_id):
+    def get_group_info(self, user_id):
         profiles = super(UserProfileManager, self).filter(
             id__exact=user_id)
         for elem in profiles:
-            group_id = elem.group,
+            group_name = elem.group,
             phone = elem.phone
-        # print(group_id)
-        # print(phone)
-        return(group_id, phone)
+        print(group_name)
+        print(phone)
+        return(group_name, phone)
 
 
 class GroupManager(models.Manager):

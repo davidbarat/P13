@@ -9,20 +9,7 @@
 <br>
 <div class="container bg-white text-black default">
     {% if user.is_authenticated %}
-    <h2>Voici la liste des groupes :</h2>
-    {% for group in groups %}
-    <div class="row">
-        <div class="col-md-6">
-            <label class="switch"> <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="col-md-6">
-            <p>{{ group.group_name }}</p>
-        </div>
-    </div>
-    {% endfor %}
-
+    <h4>Vous pouvez choisir votre groupe si il est existant :</h4><br>
     <form method="post" action="{% url 'updategroup' %}">
         {% csrf_token %}
         <div class="input-group">
@@ -32,8 +19,11 @@
                 <option value={{ group.group_name }}>{{ group.group_name }}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Mettre à jour">
     </form>
+    <br><br>
+    <h4>Ou cliquez <a href="{% url 'creategroup' %}">ici</a> afin de créer votre propre groupe :</h4>
+
 </div>
 {% endif %}
 </div>

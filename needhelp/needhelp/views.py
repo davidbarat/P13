@@ -19,9 +19,16 @@ def profile(request, username=None):
         post_owner = get_object_or_404(User, username=username)
     else:
         post_owner = request.user
-        group_name, phone = UserProfile.objects.get_group_name(post_owner.id)
+        group_name, phone = UserProfile.objects.get_group_info(post_owner.id)
+        if "default" in str(group_name[0]):
+            default = True
+        else:
+            default = False
         # group_name = Group.objects.get_group_name(group_id)
-        events = Event.objects.filter(group_id__exact=4)
+        group_id = Group.objects.get_id(group_name[0])
+        for item in group_id:
+            groupid = item['id']
+        events = Event.objects.filter(group_id__exact=groupid)
         event_list = []
         if events:
             for elem in events:
@@ -35,12 +42,15 @@ def profile(request, username=None):
                 "post_owner": post_owner,
                 "phone": phone,
                 "group_name": group_name[0],
-                "event_list": event_list
+                "event_list": event_list,
+                "default": default
                 }
         else:
             context = {
                 "post_owner": post_owner,
                 "profile": profile,
+                "phone": phone,
+                "group_name": group_name[0],
             }
     return render(request, "help/profile.html", context)
 

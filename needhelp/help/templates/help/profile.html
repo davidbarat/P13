@@ -19,7 +19,7 @@
     <header class="page-header">
         <h1 class="page-title">Mon Groupe</h1>
     </header>
-    {% if group_name in "default" %}
+    {% if default %}
     <p>Il est temps de vous rattacher à un <a href="{% url 'listgroup' %}">groupe</a></p>
     {% else %}
     <p>Vous êtes rattaché au groupe : {{ group_name }}</p>
