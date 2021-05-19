@@ -1,36 +1,37 @@
 {% extends 'help/base.html' %}
 
 {% block content %}
-<section style="background-image: linear-gradient(to top, rgba(92, 77, 66, 0.80) 50%, rgba(92, 77, 66, 0.8) 100%),url('/static/help/imgages/bg_header2.jpg'); background-repeat:no-repeat;
-        background-size:cover; text-shadow: white 0px 0px 2px; background-position: center;object-fit:
-        fill;background-repeat: no-repeat;" class="page-section bg-white">
-    <div class="container">
-        <div class="row justify-content-center text-white" id="mentions">
-            <h3>Mentions Légales</h3>
-        </div>
-    </div>
-</section>
+
 
 <section class="page-section bg-white">
     <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="active">Mentions</li>
+        </ol>
+        <header class="page-header">
+            <h1 class="page-title">Mentions Légales</h1>
+        </header>
         <div class="row">
             <p><b>Editeur du site :</b>
                 Société IT Consulting & Development RCS de Paris 123 456 789
                 <b>Tel </b>: 01 02 00 70 007
             </p>
             <p>
-                <b>Ce site est hébergé par la société Heroku :</b> Heroku Inc., 650 7th Street, San Francisco, CA (tel :
-                +33 1 (877) 563-4311)
+                <b>Ce site est hébergé par Digital Ocean :</b> DigitalOcean LLC., 101 Avenue of the Americas 10th Floor
+                New
+                York, NY 10013 United States | Phone :
+                1-347-903-7918
             </p>
             <p>
                 Pour toute question concernant vos données personnelles ou si vous souhaitez supprimer votre compte,
                 merci de nous
-                contacter à l’adresse mail suivante : privacy@purbeurre.com
+                contacter à l’adresse mail suivante : privacy@needhelp.com
             </p>
             <p>
                 Crédits multimédias :
-                <a href="https://thenounproject.com/term/carrot/29691/"> Logo Carrot</a>
-                <a href="https://startbootstrap.com/theme/creative">Theme</a></p>
+                <a href="https://fr.freepik.com/photos-vecteurs-libre/logo"> Logo Freepik</a>
+                <a href="https://www.gettemplate.com/info/progressus/">Theme Progressus</a></p>
         </div>
     </div>
 </section>
