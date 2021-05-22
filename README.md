@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.com/davidbarat/P13.svg?branch=master)](https://travis-ci.com/davidbarat/P13)
 
-The purpose of this project is to allow user to get healthy product instead of their usual fat products.
+The purpose of this project is to allow user to send sos message to a list of trusted persons.
 
-![alt text](https://github.com/davidbarat/P13/blob/master/imagesite.png)
+![Screenshot](https://github.com/davidbarat/P13/blob/master/imagesite.png)
 
 ## Main steps of the app
 1. The user has to fullfill the registration form,
