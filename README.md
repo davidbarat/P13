@@ -4,7 +4,7 @@
 
 The purpose of this project is to allow user to send sos message to a list of trusted persons.
 
-![Screenshot](https://github.com/davidbarat/P13/blob/master/imagesite.png)
+![Screenshot](https://github.com/davidbarat/P13/blob/main/imagesite.png)
 
 ## Main steps of the app
 1. The user has to fullfill the registration form,
