@@ -83,3 +83,8 @@ def about(request):
 def contact(request):
     template = loader.get_template("help/contact.html")
     return HttpResponse(template.render(request=request))
+
+
+def faq(request):
+    template = loader.get_template('help/faq.html')
+    return HttpResponse(template.render(request=request))

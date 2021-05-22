@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/davidbarat/P13.svg?branch=master)](https://travis-ci.com/davidbarat/P13)
 
-The purpose of this project is to allow user to send sos message to a list of trusted persons.
+The purpose of this project is to allow user to send SOS message to a list of trusted persons.
 
 ![Screenshot](https://github.com/davidbarat/P13/blob/main/imagesite.png)
 
@@ -23,7 +23,8 @@ This site uses:
 * Bootstrap
 * Python 3.6
 * Django 3.1
-* Raspberry 
+* Raspberry 3B+,
+* IR controler and receiver
 
 ## requisite
 * Postgresql database

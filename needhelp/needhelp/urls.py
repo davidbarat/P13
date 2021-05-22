@@ -23,4 +23,5 @@ urlpatterns = [
     path('accounts/profile/', views.profile, name="profile"),
     path('group/', include('group.urls')),
     path('sms/', views.broadcast_sms, name='sms'),
+    path('faq/', views.faq, name='faq'),
 ]

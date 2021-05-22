@@ -15,6 +15,20 @@ class FormTest(TestCase):
             "username": "Tester",
         }
 
+        cls.datagroup = {
+            "group_name": "test",
+            "adress": "rue du test",
+            "zipcode": "75001",
+            "city": "Paris"
+        }
+
+        cls.datacontact = {
+            "Nom": "Test",
+            "Email": "test@test.com",
+            "Mobile": "0906070805",
+            "Message": "J'ai besoin d'infos"
+        }
+
         cls.user2 = User.objects.create_user(
             username="test",
             email="test@test.te",
@@ -33,4 +47,14 @@ class FormTest(TestCase):
     def test_valid_UserForm(self):
 
         self.formUserForm = UserForm(data=self.data)
+        self.assertTrue(self.formUserForm.is_valid())
+
+    def test_valid_GroupForm(self):
+
+        self.formUserForm = GroupForm(data=self.datagroup)
+        self.assertTrue(self.formUserForm.is_valid())
+
+    def test_valid_ContactForm(self):
+
+        self.formUserForm = ContactForm(data=self.datacontact)
         self.assertTrue(self.formUserForm.is_valid())
