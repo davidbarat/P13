@@ -8,7 +8,6 @@ from help.forms import GroupForm
 
 
 def list(request):
-    # groups = Group.objects.all()
     groups = Group.objects.exclude(group_name__contains='default')
     context = {
             "groups": groups
@@ -23,11 +22,7 @@ def create(request):
     if request.method == "POST":
         group_form = GroupForm(data=request.POST)
         if group_form.is_valid():
-            # group = group_form.save()
             group_form.save()
-            # user = User.objects.filter(username=request.user)
-            # userprofile = UserProfile.objects.filter(user__exact=user[0])
-            # userprofile.update(group=group)
             registered = True
         else:
             messages.error(

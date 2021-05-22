@@ -47,3 +47,13 @@ JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: Refe
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1621460211336	geckodriver	INFO	Listening on 127.0.0.1:51209
+1621460213770	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofileo7YR09"
+1621460220412	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621460228771	Marionette	INFO	Listening on port 51220
+1621460228992	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621460230089	Marionette	INFO	Stopped listening on port 51220
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
