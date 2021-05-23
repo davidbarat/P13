@@ -5,17 +5,24 @@ from help.models import Group
 
 
 class UrlsTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
 
-    def setUp(self):
-        self.factory = RequestFactory()
-        Group.objects.create(
-            group_name="default",
-            adress="rue de la paix",
-            zipcode="75001",
-            city="Paris",
+        cls.user = User.objects.create_user(
+            username="test",
+            email="test@test.te",
+            password="test123",
+            last_name="test",
+            first_name="Test",
         )
-        self.user = User.objects.create_user(
-            username='david', email='david@gmail.com', password='csecret')
+        cls.group = Group(
+            group_name='default',
+            adress='rue de la paix',
+            zipcode='75001',
+            city='Paris')
+
+        cls.group.save()
+        cls.user.save()
 
     def test_mentions(self):
         url = self.client.get(reverse("mentions"))

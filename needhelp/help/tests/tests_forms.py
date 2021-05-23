@@ -1,6 +1,7 @@
 from django.test import TestCase
-from help.forms import RegisterForm, UserForm, GroupForm, ContactForm
 from django.contrib.auth.models import User
+from help.models import Group
+from help.forms import RegisterForm, UserForm, GroupForm, ContactForm
 
 
 class FormTest(TestCase):
@@ -13,13 +14,6 @@ class FormTest(TestCase):
             "first_name": "Test",
             "last_name": "test",
             "username": "Tester",
-        }
-
-        cls.datagroup = {
-            "group_name": "test",
-            "adress": "rue du test",
-            "zipcode": "75001",
-            "city": "Paris"
         }
 
         cls.datacontact = {
@@ -36,6 +30,14 @@ class FormTest(TestCase):
             last_name="test",
             first_name="Test",
         )
+
+        cls.group = Group(
+            group_name='default',
+            adress='rue de la paix',
+            zipcode='75001',
+            city='Paris')
+
+        cls.group.save()
         cls.user2.save()
         # cls.userTest = User.objects.get(id=1)
 
@@ -51,7 +53,7 @@ class FormTest(TestCase):
 
     def test_valid_GroupForm(self):
 
-        self.formUserForm = GroupForm(data=self.datagroup)
+        self.formUserForm = GroupForm(data=self.group)
         self.assertTrue(self.formUserForm.is_valid())
 
     def test_valid_ContactForm(self):
