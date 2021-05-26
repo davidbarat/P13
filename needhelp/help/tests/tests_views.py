@@ -5,25 +5,15 @@ from help.models import Group
 
 
 class UrlsTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-
-        cls.user = User.objects.create_user(
-            username="test",
-            email="test@test.te",
-            password="test123",
-            last_name="test",
-            first_name="Test",
-        )
-        cls.group = Group(
-            group_name='default',
-            adress='rue de la paix',
-            zipcode='75001',
-            city='Paris')
-
-        cls.group.save()
-        cls.user.save()
 
     def test_mentions(self):
         url = self.client.get(reverse("mentions"))
+        self.assertEqual(url.status_code, 200)
+
+    def test_faq(self):
+        url = self.client.get(reverse("faq"))
+        self.assertEqual(url.status_code, 200)
+
+    def test_about(self):
+        url = self.client.get(reverse("about"))
         self.assertEqual(url.status_code, 200)

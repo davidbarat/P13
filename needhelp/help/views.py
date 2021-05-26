@@ -90,5 +90,3 @@ def contact(request):
         contact_form = ContactForm()
 
     return render(request, "help/contact.html", {'contact_form': contact_form})
-
-

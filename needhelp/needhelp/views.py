@@ -55,6 +55,7 @@ def profile(request, username=None):
     return render(request, "help/profile.html", context)
 
 
+"""
 def broadcast_sms(request):
     message_to_broadcast = (
         "Have you played the incredible TwilioQuest ?"
@@ -68,6 +69,7 @@ def broadcast_sms(request):
                                    from_=settings.TWILIO_NUMBER,
                                    body=message_to_broadcast)
     return HttpResponse("messages sent!", 200)
+"""
 
 
 def mentions(request):
