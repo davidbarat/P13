@@ -30,7 +30,7 @@
 			<form enctype="multipart/form-data" method="POST">
 				{% csrf_token %}
 				{{ contact_form.as_p }}
-				<input class="btn btn-secondary btn-sm" type="submit" name="" value="Envoyez">
+				<input id="send" class="btn btn-secondary btn-sm" type="submit" name="" value="Envoyez">
 			</form>
 
 		</article>
