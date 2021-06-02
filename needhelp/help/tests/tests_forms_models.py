@@ -7,6 +7,7 @@ from twilio.rest import Client
 from help.models import Group, Event, UserProfile
 from help.forms import RegisterForm, UserForm, GroupForm, ContactForm
 from help.models import GroupManager, EventManager, UserProfileManager
+from help.models import notify_bysms
 
 
 class FormModelTest(TestCase):
@@ -104,7 +105,7 @@ class FormModelTest(TestCase):
             phonenumber = str(item.phone)
         self.assertEquals(phonenumber, self.phonenumber)
 
-    @mock.patch('client.messages.create')
+    @mock.patch('notify_bysms.client.messages.create')
     def test_notify_bysms(self, create_message_mock):
         client = Client()
         message_to_broadcast = (
@@ -121,5 +122,5 @@ class FormModelTest(TestCase):
                 from_=from_,
                 body=message_to_broadcast)
 
-        # assert create_message_mock.called is True
+        assert create_message_mock.called is True
         assert sent_message.sid == expected_sid
