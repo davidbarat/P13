@@ -2,32 +2,38 @@
 
 [![Build Status](https://travis-ci.com/davidbarat/P13.svg?branch=master)](https://travis-ci.com/davidbarat/P13)
 
-The purpose of this project is to allow user to send SOS message to a list of trusted persons.
+The purpose of this project is to allow user to send SOS message via SMS to a list of trusted persons.
+These persons are, this is the group of person to call in case of emergency
 
 ![Screenshot](https://github.com/davidbarat/P13/blob/main/imagesite.png)
 
-## Main steps of the app
-1. The user has to fullfill the registration form,
-2. Once connected, you can make a simple search, 
-3. The site will return a list of product with a better nutriscore grade,
-4. The user can have a detail view of the product and then if you mind, you can store your new fav product.
-5. Finally the user can find all his new products in a myproducts link in the navbar at the top.
+## Main steps of the app rapsberry side
+1. You have to follow pdf document to install and configure the app on your Raspberry:
+P13_05_note_installation_raspberry.pdf
+2. You have to add to your profile, groupname vars:
+For example:
+export groupname = 'raspberry3'
 
-## Data
-* All Data came from OpenFoodFacts Api, please follow the link below if you want more informtions:
-https://fr-en.openfoodfacts.org/
+
+## Main steps of the app web site side
+1. The user has to fullfill the registration form,
+2. Once connected, you can create a group of person or list all group already created
+
+Once service is running on Raspberry side and users created in the web site. You can press button 1 on your IR controler, it will send an emergency SMS to all your group phone number.
 	
 ## Technologies:
-This site uses:
+The Django site uses:
 
-* Bootstrap
-* Python 3.6
-* Django 3.1
-* Raspberry 3B+,
-* IR controler and receiver
+* Bootstrap,
+* Python 3.6,
+* Django 3.1,
+* Postgresql,
 
-## requisite
-* Postgresql database
+The Raspberry uses:
+* Buster Debian,
+* IR controler and receiver,
+* jumper and breadboard,
+* LED and resistor,
 
 ## Installing
 
