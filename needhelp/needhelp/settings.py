@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'needhelp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
-        'NAME': 'needhelp', # le nom de notre base de donnees creee precedemment
-        'USER': 'david', # attention : remplacez par votre nom d'utilisateur
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'needhelp',
+        'USER': 'david',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '5432',
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -169,4 +169,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'contact.needhelp001@gmail.com'
-EMAIL_HOST_PASSWORD = 'sRFR6e2vpsHRa6F'
+# EMAIL_HOST_PASSWORD = 'sRFR6e2vpsHRa6F'
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")

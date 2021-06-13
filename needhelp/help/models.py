@@ -79,19 +79,16 @@ class Event(models.Model):
         super(Event, self).save(*args, **kwargs)
 
     # def notify_bysms(self):
+    # @staticmethod
     def notify_bysms(self, group_name):
         number_list = []
-        message_to_broadcast = (
-            "J'ai besoin d'aide"
-            )
-        client = Client(
-            settings.TWILIO_ACCOUNT_SID,
-            settings.TWILIO_AUTH_TOKEN)
         result_group_id = Group.objects.get_id(group_name)
         for group in result_group_id:
             id_group = group['id']
         number_list = UserProfile.objects.get_number(id_group)
         # print(number_list)
+        sid = self.send_message(number_list)
+        """
         for i in number_list:
             recipient = '+33'+str(i.phone)
             print(recipient)
@@ -99,6 +96,25 @@ class Event(models.Model):
                 to=recipient,
                 from_=settings.TWILIO_NUMBER,
                 body=message_to_broadcast)
+        # return sent_message.sid
+        """
+        return sid
+
+    def send_message(self, number_list):
+        message_to_broadcast = (
+            "J'ai besoin d'aide"
+            )
+        client = Client(
+            settings.TWILIO_ACCOUNT_SID,
+            settings.TWILIO_AUTH_TOKEN)
+        for i in number_list:
+            recipient = '+33'+str(i.phone)
+            print(recipient)
+            sent_message = client.messages.create(
+                to=recipient,
+                from_=settings.TWILIO_NUMBER,
+                body=message_to_broadcast)
+        return sent_message.sid
 
 
 class EmailBackend(ModelBackend):

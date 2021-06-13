@@ -18,4 +18,4 @@ headers = {
     'Authorization': 'Token bda31a987eae0d08a943a062d477fbc5b7c3bf97'}
 
 r = requests.post(url, headers=headers, data=json.dumps(data))
-# print(r)
+print(r)
