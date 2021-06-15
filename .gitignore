@@ -4,3 +4,9 @@ htmlcov/
 .coverage.*
 coverage.xml
 *.cover
+env/
+venv/
+.env 
+__pycache__/
+htlmcov
+needhelp_project/settings/production.py
