@@ -29,8 +29,8 @@ class UserProfileManager(models.Manager):
         for elem in profiles:
             group_name = elem.group,
             phone = elem.phone
-        # print(group_name)
-        # print(phone)
+        print(group_name)
+        print(phone)
         return(group_name, phone)
 
 
