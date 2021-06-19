@@ -51,6 +51,7 @@ def profile(request, username=None):
                 "profile": profile,
                 "phone": phone,
                 "group_name": group_name[0],
+                "default": default
             }
     return render(request, "help/profile.html", context)
 
