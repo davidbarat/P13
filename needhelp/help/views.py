@@ -67,8 +67,13 @@ def update_event(request):
 
 
 def contact(request):
+    send = False
+    email = []
+    contact_form = ContactForm()
     if request.method == "POST":
         subject = "demande d'info"
+        from_email = "needhelp_contact"
+        email.append(request.POST['Email'])
         body = {
             'name': request.POST['Nom'],
             'email': request.POST['Email'],
@@ -81,12 +86,20 @@ def contact(request):
             send_mail(
                 subject,
                 message,
-                'dav.barat@gmail.com',
-                ['dav.barat@gmail.com'])
+                from_email,
+                email
+                )
+
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return redirect(reverse('contact'))
+        send = True
+        # return redirect(reverse('contact'))
     else:
         contact_form = ContactForm()
 
-    return render(request, "help/contact.html", {'contact_form': contact_form})
+    return render(
+        request, "help/contact.html",
+        {
+            'contact_form': contact_form,
+            'send': send
+        })
