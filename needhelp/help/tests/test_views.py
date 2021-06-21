@@ -30,7 +30,6 @@ class UrlsTest(TestCase):
         self.adress = "rue de la paix"
         self.zipcode = "75001"
         self.city = "Paris"
-        
 
         self.group = Group(
             group_name='test',
@@ -74,6 +73,7 @@ class UrlsTest(TestCase):
             user=self.user,
             phone="0607080910"
         )
+        self.group_name_update_id = 2
 
     def test_mentions(self):
         url = self.client.get(reverse("mentions"))
@@ -113,3 +113,35 @@ class UrlsTest(TestCase):
 
         self.assertEqual(status, "closed")
 
+    def test_create(self):
+        response = self.client.post(
+            '/accounts/',
+            {'username': self.email, 'password': self.password}
+            )
+        self.assertTrue(response)
+
+        response = self.client.post('/group/create/', {
+            'group_name': self.group_name,
+            'adress': self.adress,
+            'zipcode': self.zipcode,
+            'city': self.city
+        }, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_group(self):
+        response = self.client.post(
+            '/accounts/',
+            {'username': self.email, 'password': self.password}
+            )
+        self.assertTrue(response)
+
+        user = User.objects.filter(username=self.user)
+        userprofile = UserProfile.objects.filter(user__exact=user[0])
+        groupid = Group.objects.filter(
+            id__exact=self.group_name_update_id).values('id')
+        userprofile.update(group=groupid)
+        groupid_updated = Group.objects.filter(
+            id__exact=self.group_name_update_id).values('id')
+        for item in groupid_updated:
+            groupid_new = item['id']
+        self.assertEqual(groupid_new, 2)

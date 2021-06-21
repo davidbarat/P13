@@ -717,3 +717,45 @@ JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: uncaught e
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1624288373225	geckodriver	INFO	Listening on 127.0.0.1:50677
+1624288376250	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofiletOR6ss"
+1624288382734	geckodriver	INFO	Listening on 127.0.0.1:50745
+1624288385612	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofile6DmmrJ"
+1624288394941	Marionette	INFO	Marionette enabled
+1624288394941	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofile6DmmrJ/search.json.mozlz4", (void 0)))
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofiletOR6ss/search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1624288417931	Marionette	INFO	Listening on port 50688
+1624288417948	Marionette	INFO	Listening on port 50756
+1624288418630	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+1624288437987	Marionette	INFO	Stopped listening on port 50756
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1624288440054	geckodriver	INFO	Listening on 127.0.0.1:51072
+1624288441600	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofilelLhp1q"
+1624288447098	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/j4/0lyj_5015w9f6sk758wq0kgc0000gn/T/rust_mozprofilelLhp1q/search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1624288453272	Marionette	INFO	Listening on port 51081
+1624288453425	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+JavaScript error: http://127.0.0.1:8000/static/help/js/template.js, line 1: ReferenceError: jQuery is not defined
+1624288465900	Marionette	INFO	Stopped listening on port 51081
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1624288679377	Marionette	INFO	Stopped listening on port 50688
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
